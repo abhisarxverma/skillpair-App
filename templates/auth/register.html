@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>REGISTER BELOW</h2>
+{% if errors %}
+{% for error in errors %}
+<p>{{ error }}</p>
+{% endfor %}
+{% endif %}
+<form action="{% url 'users:register' %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="Create username">
+    <input type="text" name="email" placeholder="Enter email">
+    <input type="password" name="password" placeholder="Create password">
+    <input type="password" name="confirmation" placeholder="Confirm password">
+    <input type="submit" value="Register">
+</form>
+{% endblock %}
