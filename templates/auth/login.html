@@ -1,14 +1,29 @@
-{% extends "base.html" %}
+{% extends "form_layout.html" %}
+{% load static %}
 
-{% block content %}
-<h2>LOGIN BELOW</h2>
-{% if errors %}
-<p>{{ errors }}</p>
-{% endif %}
-<form action="{% url 'users:login' %}" method="post">
-    {% csrf_token %}
-    <input type="text" name="username" placeholder="Enter username">
-    <input type="password" name="password" placeholder="Enter password">
-    <input type="submit" value="Login">
-</form>
+{% block form_title %}
+<h3 class="my-3 px-5">Nice To See You Again</h3>
+{% endblock %}
+
+{% block form %}
+    {%if error_message %}
+    <p class="text-danger">{{ error_message }}</p>
+    {% endif %}
+    <form action="{% url 'users:login' %}" method="post" class="px-5">
+        {% csrf_token %}
+        <div class="mb-3">
+        <label class="form-label">Enter Username</label>
+        <input autofocus type="text" name="username" class="form-control border border-dark" id="username">
+        </div>
+        <div class="mb-3">
+        <label class="form-label">Enter Password</label>
+        <input type="password" name="password" class="form-control border border-dark" id="password">
+        </div>
+        <button type="submit" class="btn btn-dark px-5">Login</button>
+        <a href="{% url 'users:register' %}" class="d-block mt-2">Create new account?</a>
+    </form>
+{% endblock %}
+
+{% block side_image %}
+<img src="{% static 'images/login_side.jpg' %}" class="d-block  img-fluid rounded-end-5" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
 {% endblock %}

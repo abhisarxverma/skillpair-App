@@ -6,6 +6,28 @@
 {% endblock %}
 
 {% block content %}
-<h1>Enroll In Any Amazing Course</h1>
-<div id="home-courses-view"></div>
+<h2 class="text-center d-flex flex-column my-4">Courses from Top universities</h2>
+
+<div class="container">
+    <div class="row">
+        {% for course in courses %}
+        <div class="col-6 col-md-4 col-lg-3  mb-4">
+            <div class="card h-100 d-flex flex-column">
+                <!-- Placeholder Image (You can change this) -->
+                <img src="https://images.pexels.com/photos/207692/pexels-photo-207692.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                     class="card-img-top" 
+                     alt="{{ course.title }}">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">{{ course.title }}</h5>
+                    <p class="card-text">Some quick example text to describe this course.</p>
+                    <div class="mt-auto d-flex gap-2">
+                        <a href="#" class="btn btn-primary flex-grow-1">View</a>
+                        <a href="#" class="btn btn-success flex-grow-1">Enroll</a>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}

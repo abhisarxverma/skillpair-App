@@ -1,18 +1,47 @@
-{% extends "base.html" %}
+{% extends "form_layout.html" %}
+{% load static %}
 
-{% block content %}
-<h2>REGISTER BELOW</h2>
-{% if errors %}
-{% for error in errors %}
-<p>{{ error }}</p>
+{% block form_title %}
+<h3 class="mb-3 px-4">Welcome To SkillPair</h3>
+{% endblock %}
+
+{% block form %}
+{%if form.errors %}
+{% for error in form.errors %}
+<p class="text-danger">{{ error }}</p>
 {% endfor %}
 {% endif %}
-<form action="{% url 'users:register' %}" method="post">
+<form action="{% url 'users:register' %}" method="post" class="px-4">
+    {%if error_message %}
+    <p class="text-danger">{{ error_message }}</p>
+    {% endif %}
     {% csrf_token %}
-    <input type="text" name="username" placeholder="Create username">
-    <input type="text" name="email" placeholder="Enter email">
-    <input type="password" name="password" placeholder="Create password">
-    <input type="password" name="confirmation" placeholder="Confirm password">
-    <input type="submit" value="Register">
+    <label for="validationCustomUsername" class="form-label">Username</label>
+    <div class="input-group has-validation">
+        <span class="input-group-text border border-dark" id="inputGroupPrepend">@</span>
+        <input autofocus type="text" name="username" class="form-control border border-dark" id="validationCustomUsername" aria-describedby="inputGroupPrepend"
+            required>
+        <div class="invalid-feedback">
+            Please choose a username.
+        </div>
+    </div>
+    <div class="my-3">
+        <label class="form-label">Email</label>
+        <input type="email" name="email" class="form-control border border-dark" id="email">
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" name="password" class="form-control border border-dark" id="password">
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Confirm Password</label>
+        <input type="password" name="confirmation" class="form-control border border-dark" id="confirmation">
+    </div>
+    <button type="submit" class="btn btn-dark px-5">Sign Up</button>
+    <a href="{% url 'users:login' %}" class="d-block mt-2">Already have an account?</a>
 </form>
+{% endblock %}
+
+{% block side_image %}
+<img src="{% static 'images/register_side.jpg' %}" class="d-block  img-fluid rounded-end-5" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
 {% endblock %}

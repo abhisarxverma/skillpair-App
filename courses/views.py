@@ -5,7 +5,10 @@ import json
 # Create your views here.
 
 def index(request):
-    return render(request, "courses/courses.html")
+    courses = Course.objects.all()
+    return render(request, "courses/courses.html", {
+        "courses" : courses
+    })
 
 def get_all_courses(request):
     all_courses = Course.objects.all()

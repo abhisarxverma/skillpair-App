@@ -17,7 +17,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import include, path
-from courses.views import index
+from pairing.views import index
 
 urlpatterns = [
     path("admin/", admin.site.urls),

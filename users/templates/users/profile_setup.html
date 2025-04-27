@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_js %}
+<script src="{% static 'users/js/script.js' %}"></script>
+{% endblock %}
+
+{% block extra_css %}
+<script src="{% static 'users/css/styles.css' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+<!-- templates/profile_setup.html -->
+<div class="container pb-3 mt-3">
+    
+        <form method="post" action="{% url 'users:profile_setup' %}" class="form">
+            {% csrf_token %}
+
+            <div class="row px-4 px-lg-0 justify-content-around">
+
+                <div class="col-12 col-lg-5">
+                    <h2 class="mb-4 text-center text-lg-start">Set Up Your Profile For Pairing</h2>
+                    <label for="displayname" class="form-label fw-bold">Display Name</label>
+                    <input required minlength="3" autofocus type="text" name="display_name" id="displaynameinput" class="form-control fw-light border border-dark" aria-describedby="displaynameHelpBlock"
+                    placeholder="{{ request.user.username }}">
+                    <div id="displaynameHelpBlock" class="form-text">
+                        This will be visible to others generally.
+                    </div>
+
+                    <label for="skills" class="form-label fw-bold mt-3">Skills</label>
+                    <textarea required type="text" name="skills" id="skillsinput" class="form-control fw-light border border-dark" aria-describedby="skillsHelpBlock"
+                    placeholder="Problem-solving, Database management, machine learning" rows="4"></textarea>
+                    <div id="skillsHelpBlock" class="form-text">
+                        Technical and soft skills.
+                    </div>
+
+                    <label for="goals" class="form-label fw-bold mt-3">Goals</label>
+                    <textarea required type="text" id="goalsinput" name="goals" class="form-control fw-light border border-dark " aria-describedby="goalsHelpBlock"
+                    placeholder="I want to become a full-stack developer and specialize in scalable, user-friendly applications" rows="4"></textarea>
+                    <div id="goalsHelpBlock" class="form-text">
+                        Describe the career and learning goals.
+                    </div>
+
+                    <label for="experiencelevel" class="form-label fw-bold mt-3">Experience Level in Programming</label>
+                    <select required name="experience_level" class="form-select border border-dark fw-light" aria-label="Experience level">
+                        <option selected value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                    <div id="experiencelevelHelpBlock" class="form-text">
+                        Select your experience in programming.
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6 align-items-start mt-lg-0 mt-3">
+                    <table class="table table-striped scrollspy">
+                        <thead>
+                            <tr>
+                                <th>Select</th>
+                                <th>Language</th>
+                                <th>Proficiency (1-10)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input required type="checkbox" name="languages" value="python"></td>
+                                <td>Python</td>
+                                <td><input type="number" name="python" min="1" max="10" placeholder="1"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="languages" value="java"></td>
+                                <td>Java</td>
+                                <td><input type="number" name="java" min="1" max="10" placeholder="1"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="languages" value="C++"></td>
+                                <td>C++</td>
+                                <td><input type="number" name="C++" min="1" max="10" placeholder="1"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="languages" value="Ruby"></td>
+                                <td>Ruby</td>
+                                <td><input type="number" name="Ruby" min="1" max="10" placeholder="1"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="languages" value="Rust"></td>
+                                <td>Rust</td>
+                                <td><input type="number" name="Rust" min="1" max="10" placeholder="1"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="languages" value="Go"></td>
+                                <td>Go</td>
+                                <td><input type="number" name="go" min="1" max="10" placeholder="1"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="languages" value="javascript"></td>
+                                <td>JavaScript</td>
+                                <td><input type="number" name="javascript" min="1" max="10" placeholder="1"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="languages" value="kotlin"></td>
+                                <td>Kotlin</td>
+                                <td><input type="number" name="kotlin" min="1" max="10" placeholder="1"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="languages" value="typescript"></td>
+                                <td>Typescript</td>
+                                <td><input type="number" name="typescript" min="1" max="10" placeholder="1"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="languages" value="php"></td>
+                                <td>PHP</td>
+                                <td><input type="number" name="php" min="1" max="10" placeholder="1"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="languages" value="c#"></td>
+                                <td>C#</td>
+                                <td><input type="number" name="c#" min="1" max="10" placeholder="1"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="languages" value="r"></td>
+                                <td>R</td>
+                                <td><input type="number" name="r" min="1" max="10" placeholder="1"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="languages" value="dart"></td>
+                                <td>Dart</td>
+                                <td><input type="number" name="dart" min="1" max="10" placeholder="1"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="languages" value="shell_scripting"></td>
+                                <td>Shell</td>
+                                <td><input type="number" name="shell_scripting" min="1" max="10" placeholder="1"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="mt-4 text-center text-lg-end">
+                        <button class="btn btn-success py-3 px-4">
+                            <i class="fas fa-save me-2"></i> Save Profile
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+        </form>
+
+</div>
+
+
+{% endblock %}

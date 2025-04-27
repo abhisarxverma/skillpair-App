@@ -10,3 +10,19 @@ class Partner(models.Model):
 
     class Meta:
         unique_together = ("enrollment", "partner")
+
+STATUS_CHOICES = [
+    ("pending", "Pending"),
+    ("accepted", "Accepted"),
+    ("rejected", "Rejected"),
+]
+
+class Request(models.Model):
+    status = models.CharField(
+        max_length=10, 
+        choices=STATUS_CHOICES, 
+        default="pending"
+    )
+
+    def __str__(self):
+        return f"Request({self.get_status_display()})"

@@ -1,0 +1,126 @@
+{% load static %}
+<header class="d-none d-lg-block">
+    <div class="px-3 py-2 text-bg-dark border-bottom">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+                    <img src="{% static 'images/logo.png' %}" alt="Skillpair logo" class="img-fluid"
+                        style="height: 3rem;">
+                </a>
+
+                <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+                    <li>
+                        <a href="#" class="nav-link text-white">
+                            <i class="fa-solid fa-house-flag fa-xl" style="color: #ffffff;"></i>
+                            Home
+                        </a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li>
+                        <a href="#" class="nav-link text-white">
+                            <i class="fa-solid fa-user-group fa-xl me-2" style="color: #ffffff;"></i>
+                            Partner
+                        </a>
+                    </li>
+                    {% endif %}
+                    <li>
+                        <a href="{% url 'courses:index' %}" class="nav-link text-white">
+                            <i class="fa-solid fa-book-open fa-xl me-2" style="color: #ffffff;"></i>
+                            Courses
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link text-white">
+                            <i class="fa-solid fa-people-group fa-xl me-2" style="color: #ffffff;"></i>
+                            Peers
+                        </a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li>
+                        <a href="#" class="nav-link text-white">
+                            <i class="fa-solid fa-address-card fa-xl me-2" style="color: #ffffff;"></i>
+                            Profile
+                        </a>
+                    </li>
+                    {% else %}
+                    <div class="text-end">
+                        <a  class="btn btn-light text-dark me-2" href="{% url 'users:login' %}">Login</a>
+                        <a  class="btn btn-primary" href="{% url 'users:register' %}">Sign-up</a>
+                    </div>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="px-3 py-2 border-bottom mb-3">
+        <div class="container d-flex flex-wrap justify-content-center">
+          <form class="col-12 col-lg-auto mb-2 mb-lg-0 me-lg-auto" role="search">
+            <input type="search" class="form-control" placeholder="Search..." aria-label="Search" data-has-listeners="true">
+          </form>
+  
+          <div class="text-end">
+            <a  class="btn btn-light text-dark me-2" href="{% url 'users:login' %}">Login</a>
+            <a  class="btn btn-primary" href="{% url 'users:register' %}">Sign-up</a>
+          </div>
+        </div>
+    </div> -->
+</header>
+
+
+<nav class="navbar navbar-dark bg-dark fixed-top d-lg-none" style="position: relative">
+    <div class="container-fluid">
+        <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+            <img src="{% static 'images/logo.png' %}" alt="Skillpair logo" class="img-fluid" style="height: 3rem;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
+            aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+            aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Menu</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <form class="d-flex my-3" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-success" type="submit">Search</button>
+                </form>
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-white">
+                            <i class="fa-solid fa-house-flag fa-xl" style="color: #ffffff;"></i>
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'courses:index' %}" class="nav-link text-white">
+                            <i class="fa-solid fa-book-open fa-xl me-2" style="color: #ffffff;"></i>
+                            Courses
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-white">
+                            <i class="fa-solid fa-user-group fa-xl me-2" style="color: #ffffff;"></i>
+                            Partner
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-white">
+                            <i class="fa-solid fa-people-group fa-xl me-2" style="color: #ffffff;"></i>
+                            Peers
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-white">
+                            <i class="fa-solid fa-address-card fa-xl me-2" style="color: #ffffff;"></i>
+                            Profile
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>

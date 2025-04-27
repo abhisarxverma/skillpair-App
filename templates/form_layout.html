@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container col-xxl-8 px-4 py-2">
+    <div class="row align-items-center rounded-5 shadow flex-column-reverse flex-lg-row">
+        <div class="col-lg-6 order-2 order-lg-1 text-center text-lg-start px-5">
+            <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">{% block form_title %}{% endblock %}</h1>
+            <div>
+                {% block form %} {% endblock %}
+            </div>
+        </div>
+        <div class="col-10 col-sm-8 col-lg-6 p-0 m-0 order-1 order-lg-2" >
+            {% block side_image %} {% endblock %}
+        </div>
+    </div>
+</div>
+{% endblock %}
